@@ -2,15 +2,6 @@
 
 {% block css %}
 
-<style>
-    .ok {
-        color: green;
-    }
-    .no {
-        color: red;
-    }
-</style>
-
 {% endblock css %}
 
 {% block content %}
@@ -43,7 +34,11 @@
                 {% endif %}
             </td>
             <td>{{object.ncm}}</td>
-            <td>{{object.produto}}</td>
+            <td>
+                <a href="{{ object.get_absolute_url }}">
+                    {{object.produto}}
+                </a>
+            </td>
             <td>
                 R$ <span class="pull-right">
                     {{object.preco}}
@@ -55,6 +50,8 @@
         {% endfor %}
     </tbody>
 </table>
+{% else %}
+    <p class="alert alert-warning">Sem itens na lista.</p>
 {% endif %}
 
 
