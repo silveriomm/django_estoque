@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # My Apps
     'projeto.core',
     'projeto.produto',
+    'projeto.estoque',
 ]
 
 MIDDLEWARE = [
