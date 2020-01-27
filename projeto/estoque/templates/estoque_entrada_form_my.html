@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load static %}
 {% load widget_tweaks %}
 {% load bootstrap %}
 
@@ -117,7 +116,7 @@
     let campo
     let quantidade
 
-    $(document).on('change', '.clProduto', function() {
+    $(document).on('change', 'clProduto', function() {
         let self = $(this)
         let pk = $(this).val()
         let url = '/produto/' + pk + '/json/'
@@ -125,7 +124,7 @@
         $.ajax({
             url: url,
             type: 'GET',
-            success: function(response) {
+            success: function() {
                 estoque = response.data[0].estoque
                 campo = self.attr('id').replace('produto', 'quantidade')
                 // Remove o valor do campo quantidade
@@ -137,7 +136,7 @@
         })
     });
 
-    $(document).on('change', '.clQuantidade', function() {
+    $(document).on('change', 'clQuantidade', function() {
         quantidade = $(this).val();
         saldo = Number(quantidade) + Number(estoque);
         campo = $(this).attr('id').replace('quantidade', 'saldo')
