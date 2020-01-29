@@ -2,6 +2,10 @@
         // Insere classe no primeiro item de produto
         $('#id_estoque-0-produto').addClass('clProduto');
         $('#id_estoque-0-quantidade').addClass('clQuantidade');
+        // Desabilita o primeiro campo 'Saldo'
+        $('#id_estoque-0-saldo').prop('type', 'hidden')
+        // Cria um span para mostrar o saldo na tela.
+        $('label[for="id_estoque-0-saldo"]').append('<span id="id_estoque-0-saldo-span" class="lead" style="padding-left: 10px;"></span>')
 
         $('#add-item').click(function(ev) {
             ev.preventDefault();
@@ -13,6 +17,9 @@
             // Update form count
             $('#id_estoque-TOTAL_FORMS').attr('value', count + 1);
 
+            // Desabilita o campo 'Saldo'
+            $('#id_estoque-' + (count) + '-saldo').prop('type', 'hidden')
+
             // some animate to scroll to view our new form
             $('html', 'body').animate({
                scrollTop: $("#add-item").position().top - 200
@@ -20,12 +27,15 @@
 
             $('#id_estoque-' + (count) + '-produto').addClass('clProduto');
             $('#id_estoque-' + (count) + '-quantidade').addClass('clQuantidade');
+            // Cria um span para mostrar o saldo na tela.
+            $('label[for="id_estoque-' + (count) + '-saldo"]').append('<span id="id_estoque-' + (count) + '-saldo-span" class="lead" style="padding-left: 10px;"></span>')
         });
     });
 
     let estoque
     let saldo
     let campo
+    let campo2
     let quantidade
 
     $(document).on('change', '.clProduto', function() {
@@ -50,8 +60,19 @@
 
     $(document).on('change', '.clQuantidade', function() {
         quantidade = $(this).val();
+        // Aqui é feito o cálculo de soma do estoque
+        // saldo = Number(quantidade) - Number(estoque);
         saldo = Number(estoque) - Number(quantidade);
         campo = $(this).attr('id').replace('quantidade', 'saldo')
+        if (saldo < 0){
+            alert('O saldo não pode ser negativo!')
+            // Atribui o saldo ao campo 'saldo'
+            $('#'+campo).val(saldo)
+            return
+        }
         // Atribui o saldo ao campo saldo
         $('#'+campo).val(saldo)
+        campo2 = $(this).attr('id').replace('quantidade', 'saldo-span')
+        // Atrubui o saldo ao campo 'id_estoque-x-saldo-span'
+        $('#'+campo2).text(saldo)
     })
