@@ -8,14 +8,29 @@
 
 <div class="page-header">
     <h2><i class="fa fa-user">  Lista de Produtos</i></h2>
-    <span class="pull-right">
-        <a href="{% url 'produto:produto_add' %}">
-            <button type="button" class="btn btn-primary">
-                <span class="fa fa-plus"></span>Adicionar
-            </button>
-        </a>
-    </span>
 </div>
+<form action="." method="GET">
+        <div class="row">
+            <div class="col-sm-6">
+                <input name="search" class="form-control" type="text" placeholder="Buscar..." value="{{request.GET.search}}">
+            </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-search"></i> Pesquisar
+                </button>
+                <a href="{% url 'produto:produto_list' %}">
+                    <button type="button" class="btn btn-primary" style="margin-left: 5px">
+                        <i class="fa fa-minus"></i> Limpar
+                    </button>
+                </a>
+        </div>
+    </form>
+<span class="pull-right" style="margin-left: 10px">
+    <a href="{% url 'produto:produto_add' %}">
+        <button type="button" class="btn btn-primary">
+            <span class="fa fa-plus"></span> Adicionar
+        </button>
+    </a>
+</span>
 
 {% if object_list %}
 
