@@ -20,6 +20,7 @@ def estoque_entrada_list(request):
 class EstoqueEntradaList(ListView):
     model = EstoqueEntrada
     template_name = 'estoque_list.html'
+    paginate_by = 8
 
     def get_context_data(self, **kwargs):
         context = super(EstoqueEntradaList, self).get_context_data(**kwargs)
@@ -107,6 +108,7 @@ def estoque_saida_list(request):
 class EstoqueSaidaList(ListView):
     model = EstoqueSaida
     template_name = 'estoque_list.html'
+    paginate_by = 8
 
     def get_context_data(self, **kwargs):
         context = super(EstoqueSaidaList, self).get_context_data(**kwargs)
