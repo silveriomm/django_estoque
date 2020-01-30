@@ -5,8 +5,8 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib import messages
 from django.views.generic import CreateView, UpdateView, ListView
-from .models import Produto
-from .forms import ProdutoForm
+from .models import Produto, Categoria
+from .forms import ProdutoForm, CategoriaForm
 
 def produto_list(request):
     template_name = 'produto_list.html'
@@ -43,6 +43,11 @@ def produto_detail(request, pk):
 def produto_add(request):
     template_name = 'produto_form.html'
     return render(request, template_name)
+
+class ProdutoCategoriaCreate(CreateView):
+    model = Categoria
+    template_name='produto_categoria_form.html'
+    form_class = CategoriaForm
 
 class ProdutoCreate(CreateView):
     model = Produto

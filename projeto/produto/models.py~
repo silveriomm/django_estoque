@@ -39,7 +39,7 @@ class Categoria(models.Model):
         ordering = ('categoria',)
 
     def get_absolute_url(self):
-        return reverse_lazy('produto:produto_list')
+        return reverse_lazy('produto:produto_list', kwargs={'pk':self.pk})
 
     def __str__(self):
         return self.categoria
