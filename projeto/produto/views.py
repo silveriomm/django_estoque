@@ -1,6 +1,7 @@
 import csv
 import io
 from django.http import JsonResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib import messages
@@ -91,6 +92,7 @@ def save_data(data):
     Produto.objects.bulk_create(aux)
 
 
+@login_required
 def import_csv(request):
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
@@ -105,6 +107,7 @@ def import_csv(request):
     return render(request, template_name)
 
 
+@login_required
 def export_csv(request):
     header = (
         'importado',
