@@ -37,12 +37,20 @@
         </div>
     </form>
 <span class="pull-right" style="margin-left: 10px">
+    <a href="{% url 'produto:produto_categoria' %}">
+        <button type="button" class="btn btn-primary">
+            <span class="fa fa-book"></span> Categoria
+        </button>
+    </a>
+</span>
+<span class="pull-right" style="margin-left: 10px">
     <a href="{% url 'produto:produto_add' %}">
         <button type="button" class="btn btn-primary">
             <span class="fa fa-plus"></span> Adicionar
         </button>
     </a>
 </span>
+
 
 {% if object_list %}
 
@@ -52,7 +60,6 @@
             <th>Importado</th>
             <th>NCM</th>
             <th>Produto</th>
-	    <th>Categoria</th>
             <th>Preço</th>
             <th class="text-center">Estoque</th>
             <th class="text-center">Estoque mínimo</th>
@@ -72,11 +79,6 @@
             <td>
                 <a href="{{ object.get_absolute_url }}">
                     {{object.produto}}
-                </a>
-            </td>
-	    <td>
-                <a href="{{ object.get_absolute_url }}">
-                    {{object.categoria}}
                 </a>
             </td>
             <td>
