@@ -32,10 +32,6 @@
             <th class="text-right">Produto</th>
             <td>{{object.produto}}</td>
         </tr>
-	<tr>
-            <th class="text-right">Categoria</th>
-            <td>{{object.categoria}}</td>
-        </tr>
         <tr>
             <th class="text-right">NCM</th>
             <td>{{object.ncm}}</td>
