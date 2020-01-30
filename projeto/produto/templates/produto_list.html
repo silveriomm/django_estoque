@@ -6,6 +6,18 @@
 
 {% block content %}
 
+{% for message in messages %}
+    {% if 'success' in messages.tag %}
+	<p class="alert alert-success" role="alert">
+	   <span style="font-weight: bold;">{{ message }}</span>
+	</p>
+    {% else %}
+	<p class="alert alert-success" role="alert">
+	   <span style="font-weight: bold;">{{ message }}</span>
+	</p>
+    {% endif %}
+{% endfor %}
+
 <div class="page-header">
     <h2><i class="fa fa-user">  Lista de Produtos</i></h2>
 </div>
@@ -79,3 +91,14 @@
 {% include "includes/pagination.html" %}
 
 {% endblock content %}
+
+{% block js %}
+<script>
+// Close alerts after 2 seconds
+window.setTimeout(function() {
+    $('.alert').fadeTo(500,0).slideUp(500, function() {
+    	$(this).remove();
+    });
+}, 2000);
+</script>
+{% endblock js %}
