@@ -35,6 +35,8 @@
             $('label[for="id_estoque-' + (count) + '-saldo"]').append('<span id="id_estoque-' + (count) + '-saldo-span" class="lead" style="padding-left: 10px;"></span>')
             // Cria um campo com o estoque inicial.
             $('label[for="id_estoque-' + (count) + '-saldo"]').append('<input id="id_estoque-' + (count) + '-inicial" class="form-control" type="hidden" />')
+            // Select2
+            $('.clProduto').select2()
         });
     });
 
