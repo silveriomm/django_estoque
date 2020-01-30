@@ -3,10 +3,11 @@ from .models import Produto, Categoria
 
 @admin.register(Produto)
 class ProdutoAdmin(admin.ModelAdmin):
-    list_dispay = (
+    list_display = (
         '__str__',
         'importado',
         'ncm',
+        'categoria',
         'preco',
         'estoque',
         'estoque_minimo',
@@ -16,7 +17,7 @@ class ProdutoAdmin(admin.ModelAdmin):
 
 @admin.register(Categoria)
 class CategoriaAdmin(admin.ModelAdmin):
-    list_dispay = (
+    list_display = (
         '__str__',
     )
     search_fields = ('categoria',)
